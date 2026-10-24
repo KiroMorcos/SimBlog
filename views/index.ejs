@@ -1,0 +1,23 @@
+<%- include('partials/head', { title, description }) %>
+<%- include('partials/header', { brand }) %>
+
+<main class="wrap">
+  <section class="hero"><h1>Your notes, always saved.</h1><p id="stats"></p></section>
+  <div class="tools">
+    <div class="chips" id="tagBar" aria-label="Filter by tag"></div>
+    <div class="tools-r">
+      <div class="seg" role="group" aria-label="Layout"><button id="vGrid" aria-pressed="true">▦ Grid</button><button id="vList" aria-pressed="false">☰ List</button></div>
+      <select id="sort" aria-label="Sort notes">
+        <% sorts.forEach(function(s){ %><option value="<%= s[0] %>"><%= s[1] %></option>
+        <% }) %>
+      </select>
+      <button class="btn sm" id="export">Export</button>
+      <label class="btn sm" for="import" style="margin:0">Import</label><input id="import" type="file" accept="application/json" hidden>
+    </div>
+  </div>
+  <div class="grid" id="grid"></div>
+  <div class="empty" id="empty" hidden></div>
+</main>
+
+<%- include('partials/dialogs', { formats, colors }) %>
+<%- include('partials/footer') %>
